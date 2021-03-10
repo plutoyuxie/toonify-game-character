@@ -4,13 +4,13 @@
 [toonify](https://github.com/justinpinkney/toonify)作者使用基于**TensorFlow**实现的[stylegan2](https://github.com/justinpinkney/stylegan2)来完成人脸风格化。<br> 我本人更熟悉PyTorch深度学习框架，将原版作为参考，跑通基于**PyTorch**版的toonify
 
 ## 1.   熟悉stylegan2-ada-pytorch官方代码
-    ```
-    git clone https://github.com/NVlabs/stylegan2-ada-pytorch.git
+```
+git clone https://github.com/NVlabs/stylegan2-ada-pytorch.git
 
-    cd stylegan2-ada-pytorch
-    ```
-    说明：NVidia在stylegan基础上改进的stylegan2，是目前生成质量最优的生成对抗模型<br>
-    ‘ada’表示自适应可微分数据增强，可提升少样本训练的生成质量<br>
+cd stylegan2-ada-pytorch
+```
+说明：NVidia在stylegan基础上改进的stylegan2，是目前生成质量最优的生成对抗模型<br>
+‘ada’表示自适应可微分数据增强，可提升少样本训练的生成质量<br>
 
 * 配置环境：本机配置为3090和cuda 11.1, 强烈建议按照官方介绍搭建docker环境，可参考以下命令：
     ```
@@ -52,7 +52,7 @@
     随机生成样例：<br>
     ![new_model](imgs/new_model.PNG)<br>
     celebahq数据以欧美人为主，混搭仙侠风格多少有些违和感。<br>ps. 你也不能戴着眼镜穿越到仙侠世界，否则面部会产生量子纠缠、时空扭曲。
-- [ ] 可以使用**亚洲人脸数据集**训练一个base model，再做迁移学习得到new model<br> (并不打算去做)
+- [ ] 可以使用**亚洲人脸数据集**训练一个base model，再做迁移学习得到new model<br> 
 
 ## 4.实测
 * 获得被测图片的风格编码w, 并生成重建图，这里使用[官方实现](https://github.com/NVlabs/stylegan2-ada-pytorch/blob/main/projector.py)，观察到，重建前后id信息改变较大<br>
@@ -65,9 +65,10 @@ toonify作者推荐使用第三方实现[Stylegan\Stylegan2 Encoder](https://git
 
 * 不同层级 (分辨率[4,8,16,32,64,128,256]) 模型混合，可视化结果展示<br>
 ![many models](imgs/manymodels.png)<br>
-至于哪个最好看，完全看个人审美啦！
+
+## 5.可能的改进
 - [ ] pix2pix<br>
-    stylegan2照片编码过程是很慢的！需要迭代成百上千次，实际使用自然需要更快速地风格迁移方法。<br>这里可以制作成对的真实人脸-游戏人物风格图片pairs,训练一个轻量化的pix2pix模型, inference会在很大程度上得到简化和加速。<br> (并不打算去做)
+    stylegan2照片编码过程是很慢的！需要迭代成百上千次，实际使用自然需要更快速地风格迁移方法。<br>这里可以制作成对的真实人脸-游戏人物风格图片pairs,训练一个轻量化的pix2pix模型, inference会在很大程度上得到简化和加速。<br>
 
 - [ ] StyleFlow<br>
     流模型与GAN结合，提高图片编码、重建、属性变换的精度。
