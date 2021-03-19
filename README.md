@@ -58,7 +58,7 @@ cd stylegan2-ada-pytorch
 * 获得被测图片的风格编码w, 并生成重建图，这里使用[官方实现](https://github.com/NVlabs/stylegan2-ada-pytorch/blob/main/projector.py)，观察到，重建前后id信息改变较大<br>
     ![liuyifei](imgs/target.png)![someone else](imgs/proj.png)<br>
 toonify作者推荐使用第三方实现[Stylegan\Stylegan2 Encoder](https://github.com/rolux),据说效果更好一些，未验证。<br>
-    GAN方法天然存在较大重建差异，因为其编码器必然存在降维，不像可逆流模型如Glow等可对真实人脸作无损的编码和重构。
+    编码使用优化方法，基于图像特征差异提供的梯度迭代优化，找到最优w，存在误差，不像可逆流模型如Glow等可对真实人脸作无损的编码和重构。
 
 - [x] 模型混合<br>
     没有什么可介绍的，pytorch版代码很简单，根据resolution融合两个模型的权值。<br>这里风格映射网络据说区别不大，直接用base model的就行。
